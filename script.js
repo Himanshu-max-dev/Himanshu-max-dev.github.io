@@ -1,60 +1,85 @@
-window.addEventListener("load",()=>{
-  document.getElementById("loader").style.display="none";
-});
+const correctPin = "7788";
+const adminPassword = "HIMANSHU2026";
+let isAdmin = false;
 
-function toggleTheme(){
-  document.body.classList.toggle("light");
-}
-
-/* YouTube Subscriber Counter */
-async function fetchSubs(){
-  const API_KEY="YOUR_API_KEY";
-  const CHANNEL_ID="YOUR_CHANNEL_ID";
-
-  try{
-    const res=await fetch(
-      `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`
-    );
-    const data=await res.json();
-    const subs=data.items[0].statistics.subscriberCount;
-    document.getElementById("subCount").innerText=subs+"+";
-  }catch{
-    document.getElementById("subCount").innerText="API Error";
+/* PIN */
+function checkPin(){
+  const input = document.getElementById("pinInput").value;
+  if(input === correctPin){
+    document.getElementById("pin-screen").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+    loadComments();
+  } else {
+    document.getElementById("errorMsg").innerText="Wrong PIN";
   }
 }
 
-fetchSubs();
-setInterval(fetchSubs,60000);
-
-/* Firebase Comments */
-function addComment(){
-  const input=document.getElementById("commentInput");
-  if(input.value==="") return;
-
-  db.ref("comments").push({
-    text:input.value
-  });
-
-  input.value="";
+/* ADMIN */
+function showAdminLogin(){
+  document.getElementById("adminPanel").style.display="flex";
 }
 
-db.ref("comments").on("value",(snapshot)=>{
-  const section=document.getElementById("commentSection");
-  section.innerHTML="";
-  snapshot.forEach((child)=>{
-    const div=document.createElement("div");
-    div.className="comment";
-    div.innerHTML=child.val().text;
-    section.appendChild(div);
-  });
-});
+function closeAdmin(){
+  document.getElementById("adminPanel").style.display="none";
+}
 
-/* Admin */
 function adminLogin(){
-  const pass=prompt("Enter Admin Password:");
-  if(pass==="HIMANSHU2026"){
+  const pass = document.getElementById("adminPass").value;
+  if(pass === adminPassword){
+    isAdmin = true;
     alert("Admin Mode Activated");
-  }else{
+    document.querySelectorAll(".delete-btn").forEach(btn=>{
+      btn.style.display="block";
+    });
+    closeAdmin();
+  } else {
     alert("Wrong Password");
   }
+}
+
+/* COMMENTS */
+function addComment(){
+  const name = document.getElementById("username").value;
+  const text = document.getElementById("commentText").value;
+
+  if(name === "" || text === "") return;
+
+  const comments = JSON.parse(localStorage.getItem("comments")) || [];
+  comments.push({name,text});
+  localStorage.setItem("comments", JSON.stringify(comments));
+
+  document.getElementById("username").value="";
+  document.getElementById("commentText").value="";
+  loadComments();
+}
+
+function loadComments(){
+  const list = document.getElementById("commentList");
+  list.innerHTML="";
+  const comments = JSON.parse(localStorage.getItem("comments")) || [];
+
+  comments.forEach((c,index)=>{
+    const div = document.createElement("div");
+    div.className="comment";
+    div.innerHTML=`<strong>${c.name}</strong><p>${c.text}</p>`;
+
+    const del = document.createElement("button");
+    del.className="delete-btn";
+    del.innerText="X";
+    del.onclick=function(){
+      deleteComment(index);
+    };
+
+    if(isAdmin) del.style.display="block";
+
+    div.appendChild(del);
+    list.appendChild(div);
+  });
+}
+
+function deleteComment(index){
+  const comments = JSON.parse(localStorage.getItem("comments")) || [];
+  comments.splice(index,1);
+  localStorage.setItem("comments", JSON.stringify(comments));
+  loadComments();
 }
