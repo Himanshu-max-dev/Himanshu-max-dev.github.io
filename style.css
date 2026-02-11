@@ -2,78 +2,94 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:sans-serif;
 }
 
 body{
   background:#0f2027;
-  background:linear-gradient(to right,#2c5364,#203a43,#0f2027);
   color:white;
   text-align:center;
 }
 
 /* NAV */
 nav{
+  display:flex;
+  justify-content:space-between;
   padding:20px;
-  font-size:22px;
-  font-weight:bold;
-  background:rgba(0,0,0,0.3);
+  background:#111;
 }
 
-/* HEADER */
-header{
-  padding:40px 20px;
+nav button{
+  padding:8px 15px;
+  background:red;
+  border:none;
+  color:white;
+  cursor:pointer;
 }
 
-header h1{
-  font-size:32px;
-  margin-bottom:10px;
-}
-
-/* SECTIONS */
-section{
-  padding:40px 20px;
-}
-
-section h2{
-  margin-bottom:30px;
-  font-size:24px;
-}
-
-/* VIDEO GRID */
+/* VIDEO */
 .video-grid{
   display:flex;
   justify-content:center;
-  flex-wrap:wrap;
   gap:30px;
+  flex-wrap:wrap;
+  padding:30px;
 }
 
-/* 9:16 Shorts Ratio */
 .video-box{
   width:280px;
   aspect-ratio:9/16;
-  background:black;
   border-radius:15px;
   overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.5);
-  transition:0.3s;
-}
-
-.video-box:hover{
-  transform:scale(1.05);
 }
 
 .video-box iframe{
   width:100%;
   height:100%;
+}
+
+/* COMMENTS */
+.comment-input{
+  display:flex;
+  flex-direction:column;
+  width:300px;
+  margin:20px auto;
+  gap:10px;
+}
+
+.comment-input input,
+.comment-input textarea{
+  padding:10px;
+  border-radius:8px;
   border:none;
 }
 
-/* FOOTER */
-footer{
-  padding:20px;
-  background:rgba(0,0,0,0.4);
-  margin-top:40px;
+.comment-input button{
+  padding:10px;
+  background:#00c3ff;
+  border:none;
+  cursor:pointer;
+}
+
+.comment{
+  background:#222;
+  padding:15px;
+  margin:10px auto;
+  width:300px;
+  border-radius:10px;
+  position:relative;
+}
+
+.delete-btn{
+  position:absolute;
+  right:10px;
+  top:10px;
+  background:red;
+  border:none;
+  color:white;
+  cursor:pointer;
+  padding:5px 8px;
+  display:none;
 }
 
 /* PIN SCREEN */
@@ -81,14 +97,36 @@ footer{
   position:fixed;
   width:100%;
   height:100vh;
-  background:linear-gradient(135deg,#141e30,#243b55);
+  background:#000;
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:9999;
+  z-index:1000;
 }
 
 .pin-box{
-  background:rgba(255,255,255,0.1);
-  padding:40px;
-  border-rad
+  background:#111;
+  padding:30px;
+  border-radius:15px;
+}
+
+#mainContent{
+  display:none;
+}
+
+/* ADMIN PANEL */
+#adminPanel{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.admin-box{
+  background:#222;
+  padding:30px;
+  border-radius:15px;
+}
