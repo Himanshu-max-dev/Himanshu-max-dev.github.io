@@ -1,49 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Himanshu Raj | Cube & Edits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
 <body>
 
+<!-- PIN LOCK SCREEN -->
 <div id="pin-screen">
-    <div class="pin-box">
-        <h2>🔒 Enter Access PIN</h2>
-        <input type="password" id="pinInput" placeholder="Enter PIN">
-        <button onclick="checkPin()">Unlock</button>
-        <p id="errorMsg"></p>
-    </div>
+  <div class="pin-box">
+    <h2>🔒 Private Access</h2>
+    <p>Enter PIN to view content</p>
+    <input type="password" id="pinInput" placeholder="Enter PIN">
+    <button onclick="checkPin()">Unlock</button>
+    <p id="errorMsg"></p>
+  </div>
 </div>
 
-<div id="mainContent" style="display:none;">
+<!-- MAIN CONTENT -->
+<div id="mainContent">
 
 <nav>
-  <div class="logo">Himanshu Raj</div>
-  <ul>
-    <li><a href="#cube">Cube</a></li>
-    <li><a href="#edits">Edits</a></li>
-  </ul>
+  <h2>Himanshu Raj</h2>
 </nav>
 
 <header>
-  <h1>Creative Developer & Cube Artist</h1>
-  <p>Shorts • Edits • Cube Patterns</p>
+  <h1>Cube Artist & Creative Editor</h1>
+  <p>High Quality Shorts & Creative Edits</p>
 </header>
 
-<section id="cube">
+<section>
   <h2>🔥 Cube Shorts</h2>
   <div class="video-grid">
-    <iframe src="https://www.youtube.com/embed/BSryI8EkfdU" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/BxrKEe8vNzk" allowfullscreen></iframe>
+
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/BSryI8EkfdU"
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/BxrKEe8vNzk"
+        allowfullscreen></iframe>
+    </div>
+
   </div>
 </section>
 
-<section id="edits">
+<section>
   <h2>⚡ Editing Shorts</h2>
   <div class="video-grid">
-    <iframe src="https://www.youtube.com/embed/ZyhKu-vBEX0" allowfullscreen></iframe>
+
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/ZyhKu-vBEX0"
+        allowfullscreen></iframe>
+    </div>
+
   </div>
 </section>
 
 <footer>
-  © 2026 Himanshu Raj
+  © 2026 Himanshu Raj | All Rights Reserved
 </footer>
 
 </div>
 
 <script src="script.js"></script>
 </body>
+</html>
