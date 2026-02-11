@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Himanshu Raj | Cube & Edits</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Himanshu Raj | Cube & Edits</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- PIN LOCK SCREEN -->
+<!-- PIN SCREEN -->
 <div id="pin-screen">
   <div class="pin-box">
     <h2>🔒 Private Access</h2>
-    <p>Enter PIN to view content</p>
     <input type="password" id="pinInput" placeholder="Enter PIN">
     <button onclick="checkPin()">Unlock</button>
     <p id="errorMsg"></p>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
 <div id="mainContent">
 
 <nav>
   <h2>Himanshu Raj</h2>
+  <button onclick="showAdminLogin()">Admin</button>
 </nav>
 
 <header>
   <h1>Cube Artist & Creative Editor</h1>
-  <p>High Quality Shorts & Creative Edits</p>
 </header>
 
+<!-- VIDEOS -->
 <section>
   <h2>🔥 Cube Shorts</h2>
   <div class="video-grid">
 
     <div class="video-box">
-      <iframe src="https://www.youtube.com/embed/BSryI8EkfdU"
-        allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/BSryI8EkfdU" allowfullscreen></iframe>
     </div>
 
     <div class="video-box">
-      <iframe src="https://www.youtube.com/embed/BxrKEe8vNzk"
-        allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/BxrKEe8vNzk" allowfullscreen></iframe>
     </div>
 
   </div>
@@ -54,15 +51,37 @@
   <div class="video-grid">
 
     <div class="video-box">
-      <iframe src="https://www.youtube.com/embed/ZyhKu-vBEX0"
-        allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/ZyhKu-vBEX0" allowfullscreen></iframe>
     </div>
 
   </div>
 </section>
 
+<!-- COMMENT SECTION -->
+<section>
+  <h2>💬 Comments</h2>
+
+  <div class="comment-input">
+    <input type="text" id="username" placeholder="Your Name">
+    <textarea id="commentText" placeholder="Write a comment..."></textarea>
+    <button onclick="addComment()">Post Comment</button>
+  </div>
+
+  <div id="commentList"></div>
+</section>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+  <div class="admin-box">
+    <h2>Admin Login</h2>
+    <input type="password" id="adminPass" placeholder="Enter Admin Password">
+    <button onclick="adminLogin()">Login</button>
+    <button onclick="closeAdmin()">Close</button>
+  </div>
+</div>
+
 <footer>
-  © 2026 Himanshu Raj | All Rights Reserved
+  © 2026 Himanshu Raj
 </footer>
 
 </div>
