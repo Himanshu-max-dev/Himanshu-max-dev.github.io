@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himanshu Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+
+</head>
+<body>
+
+<div id="loader"><div class="spinner"></div></div>
+
+<!-- 3D Cube -->
+<div class="cube-bg">
+  <div class="cube">
+    <div></div><div></div><div></div>
+    <div></div><div></div><div></div>
+  </div>
+</div>
+
+<nav>
+  <h1>Himanshu Hub</h1>
+  <div>
+    <button onclick="toggleTheme()">Theme</button>
+    <button onclick="adminLogin()">Admin</button>
+  </div>
+</nav>
+
+<header>
+  <h2>Cube & Editing Shorts 🔥</h2>
+</header>
+
+<section>
+  <h2>@SonuSolves – Cube</h2>
+  <div class="video-grid">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/BSryI8EkfdU" allowfullscreen></iframe>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/BxrKEe8vNzk" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>@SonuCoool – Edits</h2>
+  <div class="video-grid">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/ZyhKu-vBEX0" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Live Subscribers 🚀</h2>
+  <h1 id="subCount">Loading...</h1>
+</section>
+
+<section>
+  <h2>Comments 💬</h2>
+  <input type="text" id="commentInput" placeholder="Write comment...">
+  <button onclick="addComment()">Post</button>
+  <div id="commentSection"></div>
+</section>
+
+<script src="firebase.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
